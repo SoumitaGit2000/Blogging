@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <%- include('partial/head') %>
+    <title>Blog</title>
+</head>
+
+<body>
+  <%- include('partial/navbar') %>
+
+
+    <div class="container mt-4">
+      <h3 class="mt-30">
+        <%= blog.title %>
+      </h3>
+      <img src="<%= blog.coverImage %>" alt="" width="800px">
+      <pre class="mt-3"><%= blog.body %></pre>
+    </div>
+
+    <div class="container mt-3">
+      <img src="<%= blog.createdBy.profileImage %>" alt=""><b>By <%= blog.createdBy.name %></b>
+    </div>
+
+    <div class="container mt-4">
+      <% if (locals.user) { %>
+        <form method="POST" action="/blog/comment/<%= blog._id %>">
+          <h1>Comment: <%= comments.length %></h1>
+          <textarea name="content" id="" placeholder="Enter your comment" width:"100px"></textarea><br>
+          <button type="submit" class="btn btn-primary btn-sm">Add Comment</button>
+        </form>
+    </div>
+    <% } %>
+      <div class="container mt-3">
+        <% comments.forEach(cmt=> { %>
+          <div class="container">
+            <% if (cmt.createdBy) { %>
+              <img src="<%= cmt.createdBy.profileImage %>" width="50px" style="border-radius: 50%; object-fit: cover;"
+                onerror="this.onerror=null;this.src='/image/default.jpeg';">
+              <b>
+                <%= cmt.createdBy.name %>
+              </b>
+              <% } else { %>
+                <img src="/image/default2.png" width="50px"> <!-- fallback image -->
+                <b>Unknown User</b>
+                <% } %>
+                  <i>
+                    <pre><%= cmt.content %></pre>
+                  </i>
+          </div>
+          <% }) %>
+      </div>
+
+
+      <%- include('partial/script') %>
+        <%- include('partial/footer') %>
+</body>
+
+</html>

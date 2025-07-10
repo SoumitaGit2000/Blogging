@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <%- include('partial/head') %>
+    <title>Add Blogging Page</title>
+</head>
+<body>
+<%- include('partial/navbar') %>
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8 col-lg-6">
+      <div class="card border-0 shadow-sm rounded-4">
+        <div class="card-body p-5">
+          <h3 class="card-title mb-4 text-center text-primary fw-bold">Create a New Blog</h3>
+
+          <form action="/blog/addblog" method="POST" enctype="multipart/form-data">
+            <div class="mb-4">
+              <label for="title" class="form-label fw-semibold">Title</label>
+              <input type="text" id="title" name="title" class="form-control" placeholder="Enter a catchy title" required>
+            </div>
+
+            <div class="mb-4">
+              <label for="body" class="form-label fw-semibold">Content</label>
+              <textarea id="body" name="body" class="form-control" rows="6" placeholder="Share your story..." required></textarea>
+            </div>
+
+            <div class="mb-4">
+              <label for="coverImage" class="form-label fw-semibold">Cover Image</label>
+              <input type="file" id="coverImage" name="coverImage" class="form-control" accept="image/*">
+            </div>
+
+            <div class="d-grid">
+              <button type="submit" class="btn btn-primary btn-lg rounded-pill">Publish Blog</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <%- include('partial/script') %>
+    <%- include('partial/footer') %>
+</body>
+</html>
