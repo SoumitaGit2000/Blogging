@@ -5,12 +5,11 @@ mongoose.set("strictQuery", true)
 //     return mongoose.connect(url)
 // }
 async function connectmongoose (url) {
-     return mongoose.connect(url, {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-        serverSelectionTimeoutMS: 20000 // 20 seconds
-})
- }
+     return mongoose.connect(url)
+  .then(() => console.log("✅ MongoDB connected"))
+  .catch(err => console.error("❌ MongoDB connection error:", err));
+}
+ 
 
 module.exports = {
     connectmongoose
