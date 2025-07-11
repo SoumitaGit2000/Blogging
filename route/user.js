@@ -2,6 +2,7 @@ const { Router } = require('express')
 const route = Router()
 const multer = require('multer')
 const path = require('path');
+const Blog = require("../model/blog_schema")
 const {handlerSingnup, handlerLogin,handlerLogout}= require('../controller/user')
 
 const storage = multer.diskStorage({
@@ -27,10 +28,19 @@ route.get('/login',(req, res)=>{
 route.post('/signup',upload2.single("profileImage"), handlerSingnup)
 route.post('/login', handlerLogin)
 
-route.get('/', (req,res)=>{
+route.get('/', async (req,res)=>{
+  try{
+    const blogs = await Blog.find();
     return res.render('home',{
-        user: req.user,
+        // user: req.user,
+        blogs
     }) 
+  }
+  catch{
+    console.error(err)
+    res.status(500).send("Server error")
+  }
+    
 })
 route.get('/logout',handlerLogout)
 

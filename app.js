@@ -11,7 +11,10 @@ const {checkCookie} = require('./middleware/auth_middleware')
 
 //connections
 const {connectmongoose} = require('./connections/connection')
-connectmongoose(process.env.MONGO_URL).then(() => console.log("Mongodb connected"))
+// connectmongoose(process.env.MONGO_URL).then(() => console.log("Mongodb connected"))
+connectmongoose(process.env.MONGO_URL)
+  .then(() => console.log("✅ MongoDB connected"))
+  .catch((err) => console.error("❌ MongoDB connection error:", err));
 // connectmongoose("mongodb://127.0.0.1:27017/Blog").then(() => console.log("Mongodb connected"))
 //mongoose.connect("mongodb://127.0.0.1:27017/Blog").then(() => console.log("Mongodb connected"))
 
