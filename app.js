@@ -25,6 +25,7 @@ app.use(cookieParser())
 app.use(checkCookie("cookie"))
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 app.use('/image', express.static(path.join(__dirname, 'image')));
+app.use(express.static("public"))
 
 app.use(async (req, res, next) => {
     const token = req.cookies?.cookie;

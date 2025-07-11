@@ -59,7 +59,7 @@
     <div class="container mt-5">
       <div class="d-flex flex-wrap justify-content-start gap-5">
         <% blogs.forEach(blog=> { %>
-          <div class="card" style="width: 23%;">
+          <div class="card" style="width: 30%;">
             <img src="<%= blog.coverImage || '/default.jpeg' %>" class="card-img-top" alt="cover image">
             <div class="card-body">
               <h5 class="card-title">
@@ -72,8 +72,8 @@
       </div>
     </div>
 
-    <%- include('partial/script') %>
-      <!-- <%- include('partial/footer') %> -->
+    
 </body>
-
+  <!-- <%- include('partial/script') %>
+          <%- include('partial/footer') %> -->
 </html>
