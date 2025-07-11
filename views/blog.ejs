@@ -19,7 +19,7 @@
 
 <body>
   <%- include('partial/navbar') %>
-  <!--Fetching blogs-->
+    <!--Fetching blogs-->
     <div class="container mt-4">
       <h3 class="mt-30">
         <%= blog.title %>
@@ -37,19 +37,19 @@
       <img src="<%= blog.createdBy.profileImage %>" class="profile-img" alt=""><b>By <%= blog.createdBy.name %></b>
     </div>
 
-      <!--Fetching number of comments and adding commnets-->
+    <!--Fetching number of comments and adding commnets-->
     <div class="container mt-4">
       <% if (locals.user) { %>
         <form method="POST" action="/blog/comment/<%= blog._id %>">
           <h1>Comment: <%= comments.length %>
           </h1>
-          <textarea name="content" id="" placeholder="Enter your comment" width:"100px"></textarea><br>
+          <textarea name="content" id="" placeholder="Enter your comment" required "100px"></textarea><br>
           <button type="submit" class="btn btn-primary btn-sm">Add Comment</button>
         </form>
         <% } %>
     </div>
 
-    <!--Fetching all comments along with user profile picture and their commants-->
+    <!--Fetching all comments along with user profile picture and their comments-->
     <div class="container mt-3">
         <% comments.forEach(cmt=> { %>
           <div class="container">
@@ -70,9 +70,8 @@
           <% }) %>
       </div>
 
-
-      <%- include('partial/script') %>
-        <%- include('partial/footer') %>
+    <%- include('partial/script') %>
+      <%- include('partial/footer') %>
 </body>
 
 </html>
